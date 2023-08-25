@@ -5,10 +5,12 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.ViewModelKt;
+import androidx.paging.Pager;
 import androidx.paging.PagingConfig;
 import androidx.paging.PagingLiveData;
 
 import kotlin.coroutines.intrinsics.CoroutineSingletons;
+import kotlinx.coroutines.CoroutineScope;
 
 public class MainViewModel extends AndroidViewModel {
 

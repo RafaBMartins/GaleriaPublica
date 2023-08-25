@@ -2,11 +2,18 @@ package barbosa.martins.rafael.galeriapublica;
 
 import android.content.ContentResolver;
 import android.content.ContentUris;
+import android.content.Context;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.provider.MediaStore;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class GalleryRepository {
     Context context;
@@ -20,7 +27,7 @@ public class GalleryRepository {
         int w = (int);
         context.getResources().getDimension(R.dimen.im_width);
         int h = (int);
-        context.getResources().getDimensoin(R.dimen.im_height);
+        context.getResources().getDimension(R.dimen.im_height);
 
         String[] projection = new String[]{
                 MediaStore.Images.Media._ID,
@@ -36,11 +43,11 @@ public class GalleryRepository {
             queryArgs.putString(ContentResolver.QUERY_ARG_SQL_SELECTION, selection);
             queryArgs.putStringArray(ContentResolver.QUERY_ARG_SQL_SELECTION_ARGS, selectionArgs);
 
-            queryArgs.PutString(ContentResolver.QUERY_ARG_SORT_COLUMNS, sort);
-            queryArgs.PutInt(ContentResolver.QUERY_ARG_SORT_DIRECTION, ContentResolver.QUERY_SORT_DIRECTION_ASCENDING);
+            queryArgs.putString(ContentResolver.QUERY_ARG_SORT_COLUMNS, sort);
+            queryArgs.putInt(ContentResolver.QUERY_ARG_SORT_DIRECTION, ContentResolver.QUERY_SORT_DIRECTION_ASCENDING);
 
-            queryArgs.PutInt(ContentResolver.QUERY_ARG_LIMIT, limit);
-            queryArgs.PutInt(ContentResolver.QUERY_ARG_OFFSET, offSet);
+            queryArgs.putInt(ContentResolver.QUERY_ARG_LIMIT, limit);
+            queryArgs.putInt(ContentResolver.QUERY_ARG_OFFSET, offSet);
 
             cursor = context.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, projection, queryArgs, null);
         } else {
