@@ -5,6 +5,7 @@ import android.media.Image;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.paging.ListenableFuturePagingSource;
+import androidx.paging.PagingState;
 
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.ListeningExecutorService;
@@ -27,7 +28,7 @@ public class GalleryPagingSource extends ListenableFuturePagingSource<Integer, I
 
     @Nullable
     @Override
-    public Integer getRefreshKey(@NonNull pagingState<Integer, ImageData> pagingState) {
+    public Integer getRefreshKey(@NonNull PagingState<Integer, ImageData> pagingState) {
         return null;
     }
 
@@ -62,7 +63,7 @@ public class GalleryPagingSource extends ListenableFuturePagingSource<Integer, I
                     if (imageDataList.size() >= loadParams.getLoadSize()) {
                         nextKey = finalNextPageNumber + 1;
                     }
-                    return new loadResult.Page<Integer, ImageData>(imageDataList, null, nextKey);
+                    return new LoadResult.Page<Integer, ImageData>(imageDataList, null, nextKey);
                 } catch (FileNotFoundException e) {
                     return new LoadResult.Error<>(e);
                 }

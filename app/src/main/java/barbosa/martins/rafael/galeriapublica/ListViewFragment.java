@@ -19,7 +19,6 @@ import android.view.ViewGroup;
 
 public class ListViewFragment extends Fragment {
 
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private MainViewModel mViewModel;
     private View view;
 
@@ -46,7 +45,7 @@ public class ListViewFragment extends Fragment {
             }
         });
 
-        RecyclerView rvGallery = (RecyclerView) view.findViewById(R.id.rvList);
+        RecyclerView rvGallery = (RecyclerView) view.findViewById(R.id.rvListLayout);
         rvGallery.setAdapter(listAdapter);
         rvGallery.setLayoutManager(new LinearLayoutManager(getContext()));
     }
