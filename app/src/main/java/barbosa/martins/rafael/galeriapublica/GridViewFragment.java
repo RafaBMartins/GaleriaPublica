@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.paging.PagingData;
 import androidx.paging.PagingDataAdapter;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -47,6 +48,9 @@ public class GridViewFragment extends Fragment {
 
         RecyclerView rvGallery = (RecyclerView) view.findViewById(R.id.rvGridLayout);
         rvGallery.setAdapter(gridAdapter);
-        rvGallery.setLayoutManager(new LinearLayoutManager(getContext()));
+        float w = getResources().getDimension(R.dimen.im_width);
+        int numberOfColumns = Util.calculateNoOfColumns(getContext(), w);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), numberOfColumns);
+        rvGallery.setLayoutManager(gridLayoutManager);
     }
 }
